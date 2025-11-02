@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📚 School Homework</title>
+  <style>
+    body {
+      background-color: #f4f7fa;
+      font-family: "Segoe UI", Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: #34495e;
+      font-size: 20px;
+    }
+
+    .date {
+      color: #777;
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+
+    .subject {
+      background: white;
+      width: 85%;
+      margin: 12px auto;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    .subject h3 {
+      margin-top: 0;
+      color: #1e88e5;
+    }
+
+    .subject p {
+      margin: 5px 0 0;
+      font-size: 15px;
+      color: #333;
+    }
+
+    footer {
+      margin-top: 25px;
+      color: #888;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .subject {
+        width: 95%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📘 My School Homework</h1>
+  <div class="date" id="todayDate"></div>
+
+  <div class="subject">
+    <h3>Hindi 1</h3>
+    <p>पाठ 4 का प्रश्न उत्तर लिखें और याद करें।</p>
+  </div>
+
+  <div class="subject">
+    <h3>Hindi 2</h3>
+    <p>व्याकरण में संधि और समास के उदाहरण लिखें।</p>
+  </div>
+
+  <div class="subject">
+    <h3>English 1</h3>
+    <p>Write a composition on "A Visit to the Zoo".</p>
+  </div>
+
+  <div class="subject">
+    <h3>English 2</h3>
+    <p>Learn the meanings of difficult words from Chapter 3.</p>
+  </div>
+
+  <div class="subject">
+    <h3>Mathematics</h3>
+    <p>Complete Exercise 5.2 Q1–Q10 in your notebook.</p>
+  </div>
+
+  <div class="subject">
+    <h3>Physics</h3>
+    <p>Revise the laws of reflection with examples.</p>
+  </div>
+
+  <div class="subject">
+    <h3>Chemistry</h3>
+    <p>Write the chemical symbols of first 20 elements.</p>
+  </div>
+
+  <div class="subject">
+    <h3>Biology</h3>
+    <p>Draw and label the diagram of the human heart.</p>
+  </div>
+
+  <div class="subject">
+    <h3>Computer</h3>
+    <p>Learn basic HTML tags and their uses.</p>
+  </div>
+
+  <div class="subject">
+    <h3>History & Civics</h3>
+    <p>Read and summarize the lesson on "The Revolt of 1857".</p>
+  </div>
+
+  <div class="subject">
+    <h3>Geography</h3>
+    <p>Mark important rivers of India on the map.</p>
+  </div>
+
+  <footer>
+    © 2025 My School Homework | Updated Daily
+  </footer>
+
+  <script>
+    // Show today's date automatically
+    const today = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('todayDate').innerHTML = "📅 " + today.toLocaleDateString('en-IN', options);
+  </script>
+
+</body>
+</html>
