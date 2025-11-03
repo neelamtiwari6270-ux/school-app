@@ -92,6 +92,44 @@
       background-color: #eef;
     }
 
+    /* Calendar Styles */
+    .calendar {
+      background: white;
+      border-radius: 12px;
+      width: 320px;
+      margin: 20px auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      padding: 15px;
+    }
+
+    .calendar h3 {
+      margin: 0;
+      color: #2c3e50;
+    }
+
+    .calendar table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .calendar th {
+      color: #1e88e5;
+      padding-bottom: 8px;
+    }
+
+    .calendar td {
+      width: 14%;
+      padding: 8px 0;
+      border-radius: 8px;
+    }
+
+    .calendar td.today {
+      background-color: #1e88e5;
+      color: white;
+      font-weight: bold;
+    }
+
     @media (max-width: 600px) {
       .subject {
         width: 95%;
@@ -189,6 +227,25 @@
     </table>
   </details>
 
+  <!-- 🗓️ Calendar Section -->
+  <div class="calendar">
+    <h3 id="monthAndYear"></h3>
+    <table id="calendarTable">
+      <thead>
+        <tr>
+          <th>Sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+        </tr>
+      </thead>
+      <tbody id="calendarBody"></tbody>
+    </table>
+  </div>
+
   <footer>
     © 2025 My School Homework | Updated Daily
   </footer>
@@ -198,12 +255,41 @@
     const today = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById('todayDate').innerHTML = "📅 " + today.toLocaleDateString('en-IN', options);
+
+    // Build simple monthly calendar
+    const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    const month = today.getMonth();
+    const year = today.getFullYear();
+
+    document.getElementById("monthAndYear").innerText = monthNames[month] + " " + year;
+
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    const calendarBody = document.getElementById("calendarBody");
+
+    let date = 1;
+    for (let i = 0; i < 6; i++) {
+      let row = document.createElement("tr");
+
+      for (let j = 0; j < 7; j++) {
+        let cell = document.createElement("td");
+        if (i === 0 && j < firstDay.getDay()) {
+          cell.innerHTML = "";
+        } else if (date > lastDay.getDate()) {
+          break;
+        } else {
+          cell.innerHTML = date;
+          if (date === today.getDate()) {
+            cell.classList.add("today");
+          }
+          date++;
+        }
+        row.appendChild(cell);
+      }
+
+      calendarBody.appendChild(row);
+    }
   </script>
 
 </body>
 </html>
-
-
-
-
-
