@@ -28,7 +28,7 @@
       font-size: 15px;
     }
 
-    .subject {
+    .subject, .box {
       background: white;
       width: 85%;
       margin: 12px auto;
@@ -38,7 +38,7 @@
       text-align: left;
     }
 
-    .subject h3 {
+    .subject h3, .box h3 {
       margin-top: 0;
       color: #1e88e5;
     }
@@ -47,6 +47,48 @@
       margin: 5px 0 0;
       font-size: 15px;
       color: #333;
+    }
+
+    /* Notice Board */
+    .notice-board {
+      background: #fffbea;
+      border-left: 5px solid #f39c12;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      font-size: 15px;
+      color: #555;
+      height: 60px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .notice-board p {
+      position: absolute;
+      animation: scroll 10s linear infinite;
+      width: 100%;
+    }
+
+    @keyframes scroll {
+      0% { top: 60px; }
+      100% { top: -60px; }
+    }
+
+    /* To-Do List */
+    .todo-item {
+      display: flex;
+      align-items: center;
+      margin: 5px 0;
+    }
+
+    .todo-item input {
+      margin-right: 10px;
+    }
+
+    /* Notes Upload */
+    .upload-box input[type="file"] {
+      display: block;
+      margin-top: 8px;
     }
 
     footer {
@@ -92,7 +134,7 @@
       background-color: #eef;
     }
 
-    /* Calendar Styles */
+    /* Calendar */
     .calendar {
       background: white;
       border-radius: 12px;
@@ -124,37 +166,13 @@
       font-size: 14px;
     }
 
-    .calendar button:hover {
-      background: #1565c0;
-    }
-
-    .calendar table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .calendar th {
-      color: #1e88e5;
-      padding-bottom: 8px;
-    }
-
-    .calendar td {
-      width: 14%;
-      padding: 8px 0;
-      border-radius: 8px;
-    }
-
     .calendar td.today {
       background-color: #1e88e5;
       color: white;
       font-weight: bold;
+      border-radius: 8px;
     }
 
-    @media (max-width: 600px) {
-      .subject {
-        width: 95%;
-      }
-    }
   </style>
 </head>
 <body>
@@ -169,122 +187,73 @@
   </div>
 
   <div class="subject">
-    <h3>Hindi 2</h3>
-    <p>Kuch nhi likhen.</p>
-  </div>
-
-  <div class="subject">
     <h3>English 1</h3>
     <p>Kuch nhi.</p>
   </div>
 
-  <div class="subject">
-    <h3>English 2</h3>
-    <p>Kuch nhi.</p>
+  <!-- 🔸 Notice Board -->
+  <div class="box">
+    <h3>📢 Notice Board</h3>
+    <div class="notice-board">
+      <p>Science test on Monday | Submit Computer homework by Friday | Sports Day next week!</p>
+    </div>
   </div>
 
-  <div class="subject">
-    <h3>Mathematics</h3>
-    <p>Complete Exercise 6.A Q1–Q4 in your notebook.</p>
+  <!-- 🔹 To-Do List -->
+  <div class="box">
+    <h3>✅ Homework Tracker</h3>
+    <div class="todo-item"><input type="checkbox"> Complete Maths Exercise 6A</div>
+    <div class="todo-item"><input type="checkbox"> Write English Essay</div>
+    <div class="todo-item"><input type="checkbox"> Revise Biology Chapter 3</div>
   </div>
 
-  <div class="subject">
-    <h3>Physics</h3>
-    <p>Write refraction MCQs in copy.</p>
+  <!-- 🔸 Notes Upload -->
+  <div class="box upload-box">
+    <h3>📤 Upload Notes or Share Link</h3>
+    <input type="file" accept=".pdf,.jpg,.png,.docx">
+    <p>or share a Google Drive link below:</p>
+    <input type="text" placeholder="Paste link here" style="width:95%;padding:6px;border-radius:6px;border:1px solid #ccc;">
   </div>
 
-  <div class="subject">
-    <h3>Chemistry</h3>
-    <p>Complete 6th chapter in copy.</p>
-  </div>
-
-  <div class="subject">
-    <h3>Biology</h3>
-    <p>Complete circulatory system in copy.</p>
-  </div>
-
-  <div class="subject">
-    <h3>Computer</h3>
-    <p>Complete SBC chapter in copy.</p>
-  </div>
-
-  <div class="subject">
-    <h3>History & Civics</h3>
-    <p>Write lesson “Impact of British Rule in India” in copy.</p>
-  </div>
-
-  <div class="subject">
-    <h3>Geography</h3>
-    <p>Write 1st Chapter in copy.</p>
-  </div>
-
-  <!-- 📅 Timetable Section -->
+  <!-- 📅 Timetable -->
   <details>
     <summary>📅 View Weekly Timetable</summary>
     <table>
       <tr><th>Day</th><th>Periods (1–8)</th></tr>
-
-      <tr>
-        <td><b>Monday</b></td>
-        <td>English, Maths, Chemistry, Hindi, Maths, Geography, Sanskrit, Physics</td>
-      </tr>
-      <tr>
-        <td><b>Tuesday</b></td>
-        <td>English 2, Biology, Hindi 2, Maths, Physics, History, Computer, English 1</td>
-      </tr>
-      <tr>
-        <td><b>Wednesday</b></td>
-        <td>English 2, Maths, Games, Hindi 2, Maths, Geography, Sanskrit, Physics</td>
-      </tr>
-      <tr>
-        <td><b>Thursday</b></td>
-        <td>English 2, Geography, Value Education, Biology, Hindi 2, Chemistry, Computer, Maths</td>
-      </tr>
-      <tr>
-        <td><b>Friday</b></td>
-        <td>English 2, Physics, Geography, Chemistry, Library, English 1, History, Maths</td>
-      </tr>
+      <tr><td>Monday</td><td>English, Maths, Chemistry, Hindi, Maths, Geography, Sanskrit, Physics</td></tr>
+      <tr><td>Tuesday</td><td>English 2, Biology, Hindi 2, Maths, Physics, History, Computer, English 1</td></tr>
+      <tr><td>Wednesday</td><td>English 2, Maths, Games, Hindi 2, Maths, Geography, Sanskrit, Physics</td></tr>
+      <tr><td>Thursday</td><td>English 2, Geography, Value Education, Biology, Hindi 2, Chemistry, Computer, Maths</td></tr>
+      <tr><td>Friday</td><td>English 2, Physics, Geography, Chemistry, Library, English 1, History, Maths</td></tr>
     </table>
   </details>
 
-  <!-- 🗓️ Calendar Section -->
+  <!-- 🗓 Calendar -->
   <div class="calendar">
     <div class="calendar-header">
       <button onclick="prevMonth()">◀</button>
       <h3 id="monthAndYear"></h3>
       <button onclick="nextMonth()">▶</button>
     </div>
-
     <table id="calendarTable">
       <thead>
-        <tr>
-          <th>Sun</th>
-          <th>Mon</th>
-          <th>Tue</th>
-          <th>Wed</th>
-          <th>Thu</th>
-          <th>Fri</th>
-          <th>Sat</th>
-        </tr>
+        <tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>
       </thead>
       <tbody id="calendarBody"></tbody>
     </table>
   </div>
 
-  <footer>
-    © 2025 My School Homework | Updated Daily
-  </footer>
+  <footer>© 2025 My School Homework | Updated Daily</footer>
 
   <script>
-    // Today's date
+    // Show today's date
     const today = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById('todayDate').innerHTML = "📅 " + today.toLocaleDateString('en-IN', options);
 
-    // Calendar logic
+    // Calendar
     const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-    let currentMonth = today.getMonth();
-    let currentYear = today.getFullYear();
+    let currentMonth = today.getMonth(), currentYear = today.getFullYear();
 
     function generateCalendar(month, year) {
       const firstDay = new Date(year, month, 1);
@@ -292,26 +261,17 @@
       const calendarBody = document.getElementById("calendarBody");
       calendarBody.innerHTML = "";
       document.getElementById("monthAndYear").innerText = monthNames[month] + " " + year;
-
       let date = 1;
       for (let i = 0; i < 6; i++) {
         let row = document.createElement("tr");
-
         for (let j = 0; j < 7; j++) {
           let cell = document.createElement("td");
-          if (i === 0 && j < firstDay.getDay()) {
-            cell.innerHTML = "";
-          } else if (date > lastDay.getDate()) {
-            break;
-          } else {
+          if (i === 0 && j < firstDay.getDay()) cell.innerHTML = "";
+          else if (date > lastDay.getDate()) break;
+          else {
             cell.innerHTML = date;
-            if (
-              date === today.getDate() &&
-              month === today.getMonth() &&
-              year === today.getFullYear()
-            ) {
+            if (date === today.getDate() && month === today.getMonth() && year === today.getFullYear())
               cell.classList.add("today");
-            }
             date++;
           }
           row.appendChild(cell);
@@ -320,24 +280,8 @@
       }
     }
 
-    function nextMonth() {
-      currentMonth++;
-      if (currentMonth > 11) {
-        currentMonth = 0;
-        currentYear++;
-      }
-      generateCalendar(currentMonth, currentYear);
-    }
-
-    function prevMonth() {
-      currentMonth--;
-      if (currentMonth < 0) {
-        currentMonth = 11;
-        currentYear--;
-      }
-      generateCalendar(currentMonth, currentYear);
-    }
-
+    function nextMonth() { currentMonth++; if (currentMonth > 11) { currentMonth = 0; currentYear++; } generateCalendar(currentMonth, currentYear); }
+    function prevMonth() { currentMonth--; if (currentMonth < 0) { currentMonth = 11; currentYear--; } generateCalendar(currentMonth, currentYear); }
     generateCalendar(currentMonth, currentYear);
   </script>
 
