@@ -89,7 +89,6 @@
       background-color: #f0f0f0;
     }
 
-    /* To-do list styling */
     #todoList input {
       width: 70%;
       padding: 8px;
@@ -171,49 +170,8 @@
       margin-top: 10px;
     }
 
-    /* Subject Resources Styling */
-    .resources {
-      background: #ffffff;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 15px;
-      margin: 25px auto;
-      width: 90%;
-    }
-
-    .resource-box {
-      background: #f9f9f9;
-      border-radius: 10px;
-      margin: 15px 0;
-      padding: 10px;
-      text-align: left;
-    }
-
-    .resource-box h3 {
-      color: #1e88e5;
-      margin-top: 0;
-    }
-
-    .resource-box ul {
-      list-style: none;
-      padding-left: 15px;
-    }
-
-    .resource-box li {
-      margin: 6px 0;
-    }
-
-    .resource-box a {
-      text-decoration: none;
-      color: #34495e;
-    }
-
-    .resource-box a:hover {
-      color: #1e88e5;
-    }
-
     @media (max-width: 600px) {
-      .box, details, .calendar, .resources {
+      .box, details, .calendar {
         width: 95%;
       }
     }
@@ -234,7 +192,7 @@
   <h2>📖 Today's Homework</h2>
   <div class="box"><h3>Hindi 1</h3><p>Avaya path copy me likhe.</p></div>
   <div class="box"><h3>Hindi 2</h3><p>Kuch nahi likhna.</p></div>
-  <div class="box"><h3>English 1</h3><p>Complete transformation of sentences ex 1 to 4.</p></div>
+  <div class="box"><h3>English 1</h3><p>Complete transformation of sentences ex 1–4.</p></div>
   <div class="box"><h3>English 2</h3><p>Nothing.</p></div>
   <div class="box"><h3>Mathematics</h3><p>Complete Exercise 6.A Q1–Q8 in your notebook.</p></div>
   <div class="box"><h3>Physics</h3><p>Write refraction MCQs in copy.</p></div>
@@ -243,43 +201,6 @@
   <div class="box"><h3>Computer</h3><p>Finish SBC chapter in notebook.</p></div>
   <div class="box"><h3>History & Civics</h3><p>Write lesson “Impact of British Rule in India”.</p></div>
   <div class="box"><h3>Geography</h3><p>Write first chapter in copy.</p></div>
-
-  <!-- Subject Resources -->
-  <section class="resources">
-    <h2>📚 Subject Resources</h2>
-
-    <div class="resource-box">
-      <h3>📘 English</h3>
-      <ul>
-        <li><a href="#">Grammar Notes (PDF)</a></li>
-        <li><a href="#">Essay Writing Video</a></li>
-      </ul>
-    </div>
-
-    <div class="resource-box">
-      <h3>📗 Hindi</h3>
-      <ul>
-        <li><a href="#">हिंदी व्याकरण Notes (PDF)</a></li>
-        <li><a href="#">कविता Video Explanation</a></li>
-      </ul>
-    </div>
-
-    <div class="resource-box">
-      <h3>📙 Mathematics</h3>
-      <ul>
-        <li><a href="#">Chapter 6 Notes (PDF)</a></li>
-        <li><a href="#">Algebra Revision Video</a></li>
-      </ul>
-    </div>
-
-    <div class="resource-box">
-      <h3>📕 Science</h3>
-      <ul>
-        <li><a href="#">Science Revision Notes (PDF)</a></li>
-        <li><a href="#">Biology Chapter Explanation</a></li>
-      </ul>
-    </div>
-  </section>
 
   <!-- Timetable -->
   <details>
@@ -312,7 +233,7 @@
   <!-- Notice Board -->
   <h2>📢 Notice Board</h2>
   <div class="box" id="noticeBoard">
-    <p>🗓 Complete Sanskrit 10 in copy.</p>
+    <p>🗓 Complete Sanskrit chapter 10 in copy.</p>
     <p>📗 Submit History and Geography by Thursday.</p>
   </div>
 
@@ -322,10 +243,19 @@
     <div class="calendar-grid" id="calendarDays"></div>
   </div>
 
+  <!-- PDF Upload Section -->
+  <h2>📎 Upload and View PDF</h2>
+  <div class="box">
+    <input type="file" id="pdfInput" accept="application/pdf">
+    <button onclick="uploadPDF()">📤 Upload PDF</button>
+    <p id="pdfStatus"></p>
+    <iframe id="pdfViewer" width="100%" height="400" style="border:none; display:none;"></iframe>
+  </div>
+
   <footer>© 2025 My School Homework | Made by Me 😊</footer>
 
   <script>
-    // Show today’s date
+    // Show today's date
     const today = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById('todayDate').innerHTML = "📅 " + today.toLocaleDateString('en-IN', options);
@@ -346,11 +276,9 @@
     const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
     const year = today.getFullYear();
     const month = today.getMonth();
-
     monthYear.textContent = monthNames[month] + " " + year;
     const firstDay = new Date(year, month, 1).getDay();
     const totalDays = new Date(year, month + 1, 0).getDate();
-
     for (let i = 0; i < firstDay; i++) calendarDays.appendChild(document.createElement("div"));
     for (let d = 1; d <= totalDays; d++) {
       const cell = document.createElement("div");
@@ -378,6 +306,40 @@
       localStorage.setItem("myNotes", notesArea.value);
       alert("✅ Notes saved!");
     }
+
+    // PDF Upload (Permanent)
+    window.addEventListener("load", () => {
+      const savedPDF = localStorage.getItem("savedPDF");
+      if (savedPDF) {
+        const pdfViewer = document.getElementById("pdfViewer");
+        pdfViewer.src = savedPDF;
+        pdfViewer.style.display = "block";
+        document.getElementById("pdfStatus").textContent = "✅ Last uploaded PDF loaded successfully!";
+      }
+    });
+
+    function uploadPDF() {
+      const fileInput = document.getElementById("pdfInput");
+      const file = fileInput.files[0];
+      const pdfViewer = document.getElementById("pdfViewer");
+      const status = document.getElementById("pdfStatus");
+
+      if (!file) {
+        alert("Please select a PDF file first!");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const pdfData = e.target.result;
+        localStorage.setItem("savedPDF", pdfData);
+        pdfViewer.src = pdfData;
+        pdfViewer.style.display = "block";
+        status.textContent = "✅ PDF uploaded and saved successfully!";
+      };
+      reader.readAsDataURL(file);
+    }
   </script>
+
 </body>
 </html>
