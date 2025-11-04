@@ -171,8 +171,49 @@
       margin-top: 10px;
     }
 
+    /* Subject Resources Styling */
+    .resources {
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      margin: 25px auto;
+      width: 90%;
+    }
+
+    .resource-box {
+      background: #f9f9f9;
+      border-radius: 10px;
+      margin: 15px 0;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .resource-box h3 {
+      color: #1e88e5;
+      margin-top: 0;
+    }
+
+    .resource-box ul {
+      list-style: none;
+      padding-left: 15px;
+    }
+
+    .resource-box li {
+      margin: 6px 0;
+    }
+
+    .resource-box a {
+      text-decoration: none;
+      color: #34495e;
+    }
+
+    .resource-box a:hover {
+      color: #1e88e5;
+    }
+
     @media (max-width: 600px) {
-      .box, details, .calendar {
+      .box, details, .calendar, .resources {
         width: 95%;
       }
     }
@@ -193,15 +234,52 @@
   <h2>📖 Today's Homework</h2>
   <div class="box"><h3>Hindi 1</h3><p>Avaya path copy me likhe.</p></div>
   <div class="box"><h3>Hindi 2</h3><p>Kuch nahi likhna.</p></div>
-  <div class="box"><h3>English 1</h3><p>complete transformation of sentences ex 1 to 4.</p></div>
-  <div class="box"><h3>English 2</h3><p>nothing.</p></div>
+  <div class="box"><h3>English 1</h3><p>Complete transformation of sentences ex 1 to 4.</p></div>
+  <div class="box"><h3>English 2</h3><p>Nothing.</p></div>
   <div class="box"><h3>Mathematics</h3><p>Complete Exercise 6.A Q1–Q8 in your notebook.</p></div>
   <div class="box"><h3>Physics</h3><p>Write refraction MCQs in copy.</p></div>
   <div class="box"><h3>Chemistry</h3><p>Complete chapter 6 in copy.</p></div>
   <div class="box"><h3>Biology</h3><p>Complete circulatory system notes in copy.</p></div>
   <div class="box"><h3>Computer</h3><p>Finish SBC chapter in notebook.</p></div>
   <div class="box"><h3>History & Civics</h3><p>Write lesson “Impact of British Rule in India”.</p></div>
-  <div class="box"><h3>Geography</h3><p>Write first chapter  in copy.</p></div>
+  <div class="box"><h3>Geography</h3><p>Write first chapter in copy.</p></div>
+
+  <!-- Subject Resources -->
+  <section class="resources">
+    <h2>📚 Subject Resources</h2>
+
+    <div class="resource-box">
+      <h3>📘 English</h3>
+      <ul>
+        <li><a href="#">Grammar Notes (PDF)</a></li>
+        <li><a href="#">Essay Writing Video</a></li>
+      </ul>
+    </div>
+
+    <div class="resource-box">
+      <h3>📗 Hindi</h3>
+      <ul>
+        <li><a href="#">हिंदी व्याकरण Notes (PDF)</a></li>
+        <li><a href="#">कविता Video Explanation</a></li>
+      </ul>
+    </div>
+
+    <div class="resource-box">
+      <h3>📙 Mathematics</h3>
+      <ul>
+        <li><a href="#">Chapter 6 Notes (PDF)</a></li>
+        <li><a href="#">Algebra Revision Video</a></li>
+      </ul>
+    </div>
+
+    <div class="resource-box">
+      <h3>📕 Science</h3>
+      <ul>
+        <li><a href="#">Science Revision Notes (PDF)</a></li>
+        <li><a href="#">Biology Chapter Explanation</a></li>
+      </ul>
+    </div>
+  </section>
 
   <!-- Timetable -->
   <details>
@@ -234,8 +312,8 @@
   <!-- Notice Board -->
   <h2>📢 Notice Board</h2>
   <div class="box" id="noticeBoard">
-    <p>🗓 complete sanskrit 10 in copy.</p>
-    <p>📗 Submit history and geography  by thursday.</p>
+    <p>🗓 Complete Sanskrit 10 in copy.</p>
+    <p>📗 Submit History and Geography by Thursday.</p>
   </div>
 
   <!-- Calendar -->
@@ -301,8 +379,5 @@
       alert("✅ Notes saved!");
     }
   </script>
-
 </body>
 </html>
-
-
